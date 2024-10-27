@@ -1,0 +1,254 @@
+@font-face 
+{
+  font-family: 'TmonMonsori';
+  src: url('../fonts/TmonMonsori.ttf') format('truetype');
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 100px;
+  background-color: #2b2000 !important;
+  font-size: 14px; /* 전체 폰트 크기 조정 */
+}
+
+.container 
+{
+    width: 95%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.post 
+{
+    background: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+}
+
+.post-header 
+{
+    margin-bottom: 20px;
+}
+
+.post-header h2 
+{
+    margin: 0;
+}
+
+.post-meta 
+{
+    color: #777;
+    font-size: 0.9em;
+}
+
+.post-content 
+{
+    margin-top: 20px;
+    min-height: 150px;
+}
+
+.comments 
+{
+    margin-top: 30px;
+}
+
+.comment, .reply
+{
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+    
+}
+
+.comment-meta, .reply-meta
+{
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.comment-form,
+.comment-form > form
+{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.comment-form textarea, .reply-form textarea 
+{
+    width: 96%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    resize: none; /* 크기 조정 비활성화 */
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+}
+
+.comment-form button, .reply-form button
+{
+    align-self: flex-end; /* 버튼을 오른쪽으로 배치 */
+    display: inline-block; /* 인라인 요소로 설정 */
+    padding: 7px 14px; /* 내부 여백 설정 */
+    background-color: #4CAF50; /* 배경색 지정 */
+    color: white; /* 텍스트 색상 지정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 텍스트에 밑줄 제거 */
+    border: none; /* 테두리 제거 */
+    border-radius: 20px; /* 버튼을 동그랗게 만들기 위한 속성 */
+    cursor: pointer; /* 커서 스타일 변경 */
+    font-size: 16px; /* 폰트 크기 지정 */
+    font-family: 'TmonMonsori', sans-serif; 
+}
+
+.comment-form button:hover, .reply-form button:hover
+{
+    background: #4cae4c;
+}
+
+.replies {
+    margin-left: 20px; /* 대댓글 들여쓰기 */
+}
+
+.reply-form {
+    text-align: right; /* 대댓글 쓰기 버튼을 오른쪽으로 정렬 */
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+hr
+{
+    border: 1px solid #4CAF50;
+}
+
+/* 웹 페이지 상단 메인 타이틀 이미지 */
+.main-title
+{
+    display: block;
+    text-align: center;
+}
+
+/* 로그인/회원가입 버튼 */
+.buttons
+{
+    display: block;
+    text-align: right;
+}
+
+.buttons button
+{ 
+    display: inline-block; /* 인라인 요소로 설정 */
+    padding: 5px 12px; /* 내부 여백 설정 */
+    background-color: #4CAF50; /* 배경색 지정 */
+    color: white; /* 텍스트 색상 지정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 텍스트에 밑줄 제거 */
+    border: none; /* 테두리 제거 */
+    border-radius: 20px; /* 버튼을 동그랗게 만들기 위한 속성 */
+    cursor: pointer; /* 커서 스타일 변경 */
+    font-size: 16px; /* 폰트 크기 지정 */
+    font-family: 'TmonMonsori', sans-serif; 
+}
+
+.buttons button:hover
+{
+    background-color: #45a049;
+}
+
+/* 버튼 옆 문구에 적용 */
+.buttons span
+{
+  color: #4CAF50;
+  font-size: 14px; /* 폰트 크기 지정 */
+  font-family: 'TmonMonsori', sans-serif; 
+}
+
+
+/* 네비게이션 바 스타일 */
+.navbar 
+{
+  overflow: hidden;
+  background-color: #4CAF50; /* 초록색으로 변경 */
+  font-family: 'TmonMonsori', sans-serif; 
+  display: flex;
+  justify-content: center;
+}
+
+/* navbar 클래스 하위의 <a> 태그 -> 네비게이션 바 안의 링크 */
+.navbar a 
+{
+  float: left;
+  display: block;
+  color: #f2f2f2; /* 텍스트 색상은 밝은색으로 유지 */
+  text-align: center;
+  padding: 14px 50px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white; /* 텍스트 색상은 흰색으로 유지 */
+  padding: 14px 16px;
+  background-color: #4CAF50; /* 초록색으로 변경 */
+  font-family: inherit;
+  margin: 0;
+
+  display: block;
+  color: #f2f2f2; /* 텍스트 색상은 밝은색으로 유지 */
+  text-decoration: none;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #45a049; /* 초록색에 약간의 어둡고 더 강조된 색상으로 변경 */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4CAF50; /* 초록색으로 변경 */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white; /* 텍스트 색상은 흰색으로 유지 */
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #45a049; /* 초록색에 약간의 어둡고 더 강조된 색상으로 변경 */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.comment-title {
+  color: #d4b584;; /* 원하는 색상으로 변경 */
+  font-weight: bold; /* 글씨 두껍게 */
+}

@@ -1,0 +1,7 @@
+ /* Phaser가 표시될 div 스타일 */
+ #gameContainer {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}

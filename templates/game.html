@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EzJam Play</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/game.css"> <!-- 게임화면 CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/gameChat.css"> <!-- 채팅창 CSS -->
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Phaser 게임 화면이 렌더링 될 컨테이너 -->
+    </div>
+    <div id="chatContainer">
+        <!-- 채팅방 제목 -->
+        <div id="chatTitle" class="chat-title">채팅방 이름</div>
+        <!-- 채팅 메시지와 입력창이 렌더링 될 컨테이너 -->
+    </div>
+    <script src="{{ url_for('static', filename='js/Functions.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/CreateMapsAndCollsions.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/BaseMap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Maps.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Chat.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>EzJam 자유게시판</title>
+    <link rel="stylesheet" type="text/css" href="static/css/base.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="menu">
+            <ul>
+                <li><a href="/notice">공지사항</a></li>
+                <li><a href="/community">자유게시판</a></li>
+                <li><a href="/"><img src="static/logos/main_logo.png" alt="Main Logo" style="height: 70px;"></a></li>
+                <li><a href="#" onclick="showPopup()">랭킹</a></li>
+                <li><a href="/event">이벤트</a></li>
+            </ul>            
+        </div>
+        <div class="auth-buttons">
+            {% if not loginInfo %}
+            <button class="auth-button" onclick="location.href='/login'">로그인</button>
+            <button class="auth-button" onclick="location.href='/signup'">회원가입</button>
+            {% endif %}
+            {% if loginInfo %}
+            <span>{{loginInfo}}</span>
+            <button class="auth-button" onclick="location.href='/logout'">로그아웃</button>
+            {% endif %}
+        </div>
+    </div>
+    <style>
+        #upload-button {
+          float: right; /* 글쓰기 버튼을 오른쪽으로 정렬 */
+        }
+      </style>
+      <script>
+        function showPopup() {
+            alert('coming soon');
+        }
+    </script>
+    <div class="main-content">
+            <h1><strong><a style="color:#4CAF50;">자유게시판</a></strong></h1>
+                <div class='community-container'>
+                <button id='upload-button' onclick="location.href='/write'">글쓰기</button>
+                <form action="" method="GET">
+                      <select id="search-setting" name="search_type">
+                          <option value="title" {% if search_type == 'title' %}selected{% endif %}>제목</option>
+                          <option value="author" {% if search_type == 'author' %}selected{% endif %}>글쓴이</option>
+                      </select>
+                 
+                    <input id="search-string" type="text" name="search" value="{{ search_query }}">
+                    <input type="submit" value="검색">
+                </form>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>글번호</th>
+                        <th>작성자</th>
+                        <th style='width: 70%;'>제목</th>
+                        <th>작성시각</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td>{{ post[0] }}</td>
+                            <td>{{ post[2] }}</td>
+                            <td><a style="color:#110957;" href="/post/{{ post[0] }}">{{ post[1] }}</a></td>
+                            <td>{{ post[3].strftime('%H:%M') }}&nbsp;&nbsp;&nbsp;&nbsp;{{ post[3].strftime('%m/%d') }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">게시물이 없습니다.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <div class="pagination" style="text-align: center; margin-top: 20px;"> <!-- 중앙 정렬 -->
+        {% if page > 1 %}
+            <a href="?page={{ page - 1 }}&search={{ search_query }}&search_type={{ search_type }}">&#60;&#60; 이전 페이지</a>
+        {% endif %}
+        {% if page < total_pages %}
+            <a href="?page={{ page + 1 }}&search={{ search_query }}&search_type={{ search_type }}">다음 페이지 &#62;&#62;</a>
+        {% endif %}
+    </div>
+</body>
+</html>

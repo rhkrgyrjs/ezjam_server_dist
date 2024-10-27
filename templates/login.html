@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>EzJam 로그인</title>
+    <link rel="stylesheet" type="text/css" href="static/css/login.css">
+    <script>
+        // 쿠키 설정 함수
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // 쿠키 가져오기 함수
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // 페이지 로드 시 쿠키 확인하여 아이디 필드에 값 채우기
+        window.onload = function () {
+            var rememberedUsername = getCookie("rememberedUsername");
+            if (rememberedUsername) {
+                document.getElementById('user-id').value = rememberedUsername;
+            }
+        }
+
+        // 로그인 시 아이디 기억하기 체크 여부에 따라 쿠키 설정
+        function rememberUsername() {
+            var checkbox = document.getElementById('remember-check');
+            if (checkbox.checked) {
+                var userId = document.getElementById('user-id').value;
+                setCookie('rememberedUsername', userId, 30); // 30일간 유지되는 쿠키 설정
+            } else {
+                setCookie('rememberedUsername', '', -1); // 쿠키 삭제
+            }
+        }
+    </script>
+    <style>
+        /* 배경 이미지를 main 페이지에만 적용 */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #2b2000;
+            color: #d4b584;
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='logos/main_page.png') }}");
+            background-size: cover; /* 변경: 이미지가 짤리지 않고 다 나오도록 설정 */
+            background-position: center; /* 이미지가 중앙에 오도록 설정 */
+            background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="main-title">
+    <a href="/">
+        <img width="120" height="100" src="static/logos/main_logo.png" style="margin-top: 20px;">
+    </a>
+</div>
+<div class="login-wrapper">
+    <h2>로그인</h2>
+    <form id="login-form" method="POST" action="/login">
+        <input id="user-id" name="user-id" type="text" placeholder="아이디">
+        <input name="user-pw" type="password" placeholder="비밀번호">
+        <label for="remember-check">
+            <input type="checkbox" id="remember-check" onchange="rememberUsername()">아이디 저장하기
+        </label>
+        {% if loginMessage %}
+        <span style="color: red; font-size: 12px;">{{ loginMessage }}</span>
+        <br>
+        {% endif %}
+        <input type="submit" value="로그인">
+    </form>
+</div>
+</body>
+</html>
